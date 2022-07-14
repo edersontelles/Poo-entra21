@@ -1,10 +1,17 @@
 package principal;
 
+import java.security.PublicKey;
+import java.util.ArrayList;
+
 import entidade.Conta;
+import entidade.Pessoa;
+import entidade.PessoaFisica;
+import entidade.PessoaJuridica;
 
 public class PrincipalLista1 {
 
 	public static void main(String[] args) {
+		/*
 		//Crie uma conta chamada “conta1”
 		//	com agência 123-7, 
 		//	conta 12345-6 e saldo inicial de 300;
@@ -42,6 +49,42 @@ public class PrincipalLista1 {
 		System.out.println("Saldo da conta: R$" + conta1.getSaldo());
 
 		//Mostre o valor do saldo atual na tela.
-
+		*/
+		
+		// cadastrar as contas
+		Conta conta1 = new Conta("123-6", "12345-6", 600);
+		Conta conta2 = new Conta("123-7", "12345-7", -700);
+		
+		// preencher numa lista de contas
+		ArrayList<Conta> contas = new ArrayList<Conta>();
+		contas.add(conta1);
+		contas.add(conta2);
+		
+		// cadastrar uma lista de pessoas (PFs)
+		ArrayList<Pessoa> pessoasF = new ArrayList<Pessoa>();
+		
+		PessoaFisica pedro = new PessoaFisica("Pedro", "01233311122");
+		pedro.setDataNascimento("15/08/1802");
+		// associar a lista de contas à pessoa
+		pedro.setContas(contas);
+		
+		pessoasF.add(pedro);
+		
+		// Verificar Adimplência
+		pedro.verificarAdimplente();
+		
+		for(int i = 0; i < pessoasF.size(); i++) {
+			System.out.println("Nome: " + pessoasF.get(i).getNome() + " | Adimplência: " + pessoasF.get(i).isAdimplente());
+		}
+		
+		
+		
+		ArrayList<Pessoa> pessoasJ = new ArrayList<Pessoa>();
+		
+		PessoaJuridica firma1 = new PessoaJuridica("A firma", "22333333000011");
+		
+		pessoasJ.add(firma1);
+		
+		
 	}
 }

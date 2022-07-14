@@ -24,7 +24,19 @@ public class PessoaJuridica extends Pessoa {
 
 	@Override
 	public boolean verificarAdimplente() {
-		// TODO Auto-generated method stub
-		return false;
+		
+		double saldoGeral = 0;
+		
+		for (int i = 0; i < getContas().size(); i++) {
+			saldoGeral += getContas().get(i).getSaldo();
+		}
+		
+		setAdimplente(false);
+		
+		if(saldoGeral > -1000) {
+			setAdimplente(true);
+		}
+		
+		return isAdimplente();
 	}
 }

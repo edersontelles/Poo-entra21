@@ -1,5 +1,7 @@
 package entidade;
 
+import java.util.Iterator;
+
 public class PessoaFisica extends Pessoa {
 
 	//Atributos
@@ -78,8 +80,18 @@ public class PessoaFisica extends Pessoa {
 	@Override
 	public boolean verificarAdimplente() {
 		
+		double saldoGeral = 0;
 		
-
-		return false;
+		for (int i = 0; i < getContas().size(); i++) {
+			saldoGeral += getContas().get(i).getSaldo();
+		}
+		
+		setAdimplente(false);
+		
+		if(saldoGeral > -500) {
+			setAdimplente(true);
+		}
+		
+		return isAdimplente();
 	}
 }
