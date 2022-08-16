@@ -1,4 +1,4 @@
-package entidade;
+package model.entidade;
 
 public class Conta {
 	//Atributos
@@ -18,21 +18,19 @@ public class Conta {
 		this.saldo = saldo;
 	}
 
-	//M√©todos
+	//MÈtodos
 	public double sacar(double valorSaque) {
-//		double valorSaqueEfetivo = 0;
-//		
-//		if(this.saldo >= valorSaque) {
-//			valorSaqueEfetivo = valorSaque;
-//		}else {
-//			valorSaqueEfetivo = this.saldo;
-//		}
-//		
-//		this.saldo = this.saldo - valorSaqueEfetivo;
-//			
-//		return valorSaqueEfetivo;		
-		this.saldo = this.saldo - valorSaque;
-		return valorSaque;
+		double valorSaqueEfetivo = 0;
+		
+		if(this.saldo >= valorSaque) {
+			valorSaqueEfetivo = valorSaque;
+		}else {
+			valorSaqueEfetivo = this.saldo;
+		}
+		
+		this.saldo = this.saldo - valorSaqueEfetivo;
+			
+		return valorSaqueEfetivo;		
 	}
 	
 	public void depositar(double valorDeposito) {
@@ -42,7 +40,7 @@ public class Conta {
 	 * Atualiza do saldo da conta, aplicando percentual de rendimento
 	 * informado
 	 * 
-	 * @param percentualRendimento o percentual (n√£o dividir por 100)
+	 * @param percentualRendimento o percentual (n„o dividir por 100)
 	 */
 	public void efetuarRendimento(double percentualRendimento) {
 		double indiceRendimento = percentualRendimento / 100;

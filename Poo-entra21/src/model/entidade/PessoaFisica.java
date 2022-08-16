@@ -1,12 +1,15 @@
-package entidade;
+package model.entidade;
 
-import java.util.Iterator;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.concurrent.TimeUnit;
 
 public class PessoaFisica extends Pessoa {
 
 	//Atributos
 	private String cpf;
-	private String dataNascimento;
+	private Date dataNascimento;
 	private double alturaEmMetros;
 	private char sexo;
 	
@@ -20,7 +23,7 @@ public class PessoaFisica extends Pessoa {
 		this.cpf = cpf;
 	}
 	
-	public PessoaFisica(String cpf, String nome, String dataNascimento, double alturaEmMetros, char sexo) {
+	public PessoaFisica(String cpf, String nome, Date dataNascimento, double alturaEmMetros, char sexo) {
 		super(nome);
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
@@ -28,13 +31,19 @@ public class PessoaFisica extends Pessoa {
 		this.sexo = sexo;
 	}
 
-	//MÃ©todos
-	public int calcularIdade(int anoAtual) {
-		int idade = 0;
+	//Métodos
+	public int calcularIdade() {
+		this.dataNascimento = new Date();
 		
-		//Assumir dd/MM/yyyy
-		String anoNascimento = this.dataNascimento.substring(6);
-		idade = anoAtual - Integer.valueOf(anoNascimento);
+		Calendar dateOfBirth = new GregorianCalendar();
+		dateOfBirth.setTime(this.dataNascimento);
+
+		// Cria um objeto calendar com a data atual
+		Calendar today = Calendar.getInstance();
+
+		// Obtém a idade baseado no ano
+
+		int idade = today.get(Calendar.YEAR) - dateOfBirth.get(Calendar.YEAR);
 		
 		return idade;
 	}
@@ -44,12 +53,12 @@ public class PessoaFisica extends Pessoa {
 		return this.getNome() + "zinho(a)";
 	}
 	
-	//MÃ©todos getters e setters
-	public String getDataNascimento() {
+	//Métodos getters e setters
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -78,20 +87,9 @@ public class PessoaFisica extends Pessoa {
 	}
 
 	@Override
-	public boolean verificarAdimplente() {
-		
-		double saldoGeral = 0;
-		
-		for (int i = 0; i < getContas().size(); i++) {
-			saldoGeral += getContas().get(i).getSaldo();
-		}
-		
-		setAdimplente(false);
-		
-		if(saldoGeral > -500) {
-			setAdimplente(true);
-		}
-		
-		return isAdimplente();
+	public String toString() {
+		return "cpf=" + cpf + ", nome=" + getNome();
 	}
+	
+	
 }

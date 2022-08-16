@@ -2,9 +2,9 @@ package principal;
 
 import java.util.Scanner;
 
-import entidade.Endereco;
-import entidade.Funcionario;
-import entidade.Gerente;
+import model.entidade.Endereco;
+import model.entidade.Funcionario;
+import model.entidade.Gerente;
 
 public class ProgramaTestaFuncionario {
 
@@ -15,25 +15,26 @@ public class ProgramaTestaFuncionario {
 		ruaLegal.setNumero("10");
 		ruaLegal.setCep("88495-000");
 		
-		Funcionario srCebola = new Funcionario("Cebolão", 5000, ruaLegal);
+		Funcionario srCebola = new Funcionario("CebolÃ£o", 5000, ruaLegal);
 
 		//srCebola.setEndereco(ruaLegal);
 		
+
 		//	String cep, String logradouro, String numero, String bairro, 
 		//String cidade, String estado) {
 
 		Endereco endereco1 = new Endereco("88032-000", "Rua 1", "100", 
-									 "Centro", "Florianópolis", "SC");
+									 "Centro", "FlorianÃ³polis", "SC");
 		
 		Endereco endereco2 = new Endereco("88032-000", "Rua 2", "200", 
-				 "Estreito", "Florianópolis", "SC");
+				 "Estreito", "FlorianÃ³polis", "SC");
 		
 		Scanner teclado = new Scanner(System.in);
 		
 		//System.out.println("Informe o nome do gerente:");
 		//String nomeGerente = teclado.nextLine();
 		
-//		System.out.println("Informe o salário do gerente:");
+//		System.out.println("Informe o salÃ¡rio do gerente:");
 //		double salarioGerente = teclado.nextDouble();
 		
 //		Gerente gerenteDaFirma = new Gerente(nomeGerente, salarioGerente);
@@ -53,7 +54,7 @@ public class ProgramaTestaFuncionario {
 		for (int i = 0; i < empregadosDaFirma.length; i++) {
 			Funcionario funcionarioAtual = empregadosDaFirma[i];
 			if(funcionarioAtual != null) {
-				System.out.println("Funcionário atual: " + funcionarioAtual.getNome());
+				System.out.println("FuncionÃ¡rio atual: " + funcionarioAtual.getNome());
 				totalFolha += funcionarioAtual.calcularPagamento();
 				
 				if(funcionarioAtual instanceof Gerente) {
@@ -69,8 +70,8 @@ public class ProgramaTestaFuncionario {
 		
 		
 		
-//		System.out.println("O salário do gerente " + gerenteDaFirma.getNome()
-//							+ " é: " + gerenteDaFirma.calcularPagamento());
+//		System.out.println("O salÃ¡rio do gerente " + gerenteDaFirma.getNome()
+//							+ " Ã©: " + gerenteDaFirma.calcularPagamento());
 //		
 		
 	}

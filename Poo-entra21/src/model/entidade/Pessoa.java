@@ -1,14 +1,10 @@
-package entidade;
-
-import java.util.ArrayList;
+package model.entidade;
 
 public abstract class Pessoa {
 
 	private String nome;
 	private boolean adimplente;
 	
-	private ArrayList<Conta> contas;
-
 	public Pessoa() {
 		super();
 		this.adimplente = true;
@@ -21,8 +17,6 @@ public abstract class Pessoa {
 	}
 	
 	public abstract String getApelido();
-	
-	public abstract boolean verificarAdimplente();	
 
 	public String getNome() {
 		return nome;
@@ -31,7 +25,7 @@ public abstract class Pessoa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 	public boolean isAdimplente() {
 		return adimplente;
 	}
@@ -39,13 +33,4 @@ public abstract class Pessoa {
 	public void setAdimplente(boolean adimplente) {
 		this.adimplente = adimplente;
 	}
-
-	public ArrayList<Conta> getContas() {
-		return contas;
-	}
-
-	public void setContas(ArrayList<Conta> contas) {
-		this.contas = contas;
-	}
-	
 }
